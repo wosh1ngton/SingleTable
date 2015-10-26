@@ -18,7 +18,7 @@ import javax.persistence.OneToOne;
 @DiscriminatorValue(value="HO")
 public class HierObjectID extends UIDBasedID {
     
-   
+    @OneToOne
     private UID root;   // mandatory
     @Column
     private String extension;

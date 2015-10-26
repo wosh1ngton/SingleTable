@@ -5,6 +5,7 @@
  */
 package com.projeto.tcc.dominio.singleTable;
 
+import java.io.Serializable;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
@@ -22,7 +23,7 @@ import javax.persistence.Table;
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="object_id_TYPE",
         discriminatorType=DiscriminatorType.STRING, length=2)
-public abstract class ObjectID {
+public abstract class ObjectID implements Serializable {
     @Id
     private String value;
 

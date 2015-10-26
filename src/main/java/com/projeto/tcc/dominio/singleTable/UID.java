@@ -5,6 +5,7 @@
  */
 package com.projeto.tcc.dominio.singleTable;
 
+import java.io.Serializable;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
@@ -22,13 +23,12 @@ import javax.persistence.Table;
 @Table(name="UID")
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="UID_TYPE",
-        discriminatorType=DiscriminatorType.STRING, length=1)
-public abstract class UID {
+        discriminatorType=DiscriminatorType.STRING, length=20)
+public abstract class UID implements Serializable {
 
     public UID() {
     }
-    
-    
+        
     @Id
     private String value;
 
@@ -39,6 +39,5 @@ public abstract class UID {
     public void setValue(String value) {
         this.value = value;
     }
-    
-    
+        
 }

@@ -5,6 +5,7 @@
  */
 package com.projeto.tcc.dominio.singleTable;
 
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
@@ -24,7 +25,7 @@ import javax.persistence.Table;
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="ObjectRef_TYPE",
         discriminatorType=DiscriminatorType.STRING, length=1)
-public class ObjectRef {
+public class ObjectRef implements Serializable {
     
     @Id
     @OneToOne

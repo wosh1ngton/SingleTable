@@ -6,9 +6,12 @@
 package com.projeto.tcc.dominio.singleTable;
 
 import java.util.List;
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 
 /**
  *
@@ -30,7 +33,10 @@ public class ArchetypeID extends ObjectID {
     private String domainConcept;       // calculated
     @Column
     private String conceptName;
-    @Column
+    @ElementCollection
+    @CollectionTable(name="Especializacao",
+    joinColumns=@JoinColumn(name="archetype_id"))
+    @Column(name="especializao")
     private List<String> specialisation;
     @Column
     private String versionID;

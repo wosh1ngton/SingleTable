@@ -13,7 +13,7 @@ import javax.persistence.Entity;
  * @author Woshington
  */
 @Entity
-@DiscriminatorValue(value="I")
+//@DiscriminatorValue(value="I")
 public class InternetID extends UID {
     
 }
