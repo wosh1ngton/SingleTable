@@ -1,13 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.projeto.tcc.dominio.singleTable;
 
 import java.io.Serializable;
-import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
@@ -17,6 +13,25 @@ import javax.persistence.Id;
 @Entity
 public class VersionTreeID implements Serializable {
 
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    private Long id;
+    private String value;
+    private String trunkVersion;
+    private String branchNumber;
+    private String branchVersion;
+
+    public VersionTreeID() {
+    }
+
+    public VersionTreeID(String value, String trunkVersion, String branchNumber, String branchVersion) {
+        this.value = value;
+        this.trunkVersion = trunkVersion;
+        this.branchNumber = branchNumber;
+        this.branchVersion = branchVersion;
+    }
+    
+    
     public String getTrunkVersion() {
         return trunkVersion;
     }
@@ -42,14 +57,7 @@ public class VersionTreeID implements Serializable {
     }
     
     
-    @Id
-    private String value;
-    @Column
-    private String trunkVersion;
-    @Column
-    private String branchNumber;
-    @Column
-    private String branchVersion;
+    
 
     public String getValue() {
         return value;
@@ -57,5 +65,13 @@ public class VersionTreeID implements Serializable {
 
     public void setValue(String value) {
         this.value = value;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

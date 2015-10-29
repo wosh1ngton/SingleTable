@@ -1,15 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.projeto.tcc.dominio.singleTable;
-
 import java.io.Serializable;
-import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
@@ -21,28 +16,46 @@ import javax.persistence.Table;
  * @author Woshington
  */
 @Entity
-@Table(name="Object_Ref")
+@Table(name="ObjectRef") /*Anotação opcional, por padrão o nome da classe é o nome da tabela,
+caso deseje mudar o nome da tabela gerada é preciso especificar na clásula name. */
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="ObjectRef_TYPE",
-        discriminatorType=DiscriminatorType.STRING, length=1)
+        discriminatorType=DiscriminatorType.STRING, length=20)
 public class ObjectRef implements Serializable {
     
     @Id
-    @OneToOne
-    private ObjectID id;
-    @Column
-    private String namespace;
-    @Column
-    private String type;
+    @GeneratedValue(strategy=GenerationType.AUTO) //Realiza o mapeamento de maneira automática.
+    private Long id;
     
-    ObjectRef(){};
+    @OneToOne
+    private ObjectID objectId;
+    private String namespace;
+    private String type;
 
-    public ObjectID getId() {
+    public ObjectRef() {
+    }
+    
+    //@FullConstructor
+    public ObjectRef(ObjectID objectId, String namespace, String type) {
+        this.objectId = objectId;
+        this.namespace = namespace;
+        this.type = type;
+    }
+    
+    public Long getId() {
         return id;
     }
 
-    public void setId(ObjectID id) {
+    public void setId(Long id) {
         this.id = id;
+    }
+
+    public ObjectID getObjectId() {
+        return objectId;
+    }
+
+    public void setObjectId(ObjectID objectId) {
+        this.objectId = objectId;
     }
 
     public String getNamespace() {
@@ -60,6 +73,5 @@ public class ObjectRef implements Serializable {
     public void setType(String type) {
         this.type = type;
     }
-       
-    
+      
 }

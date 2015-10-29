@@ -1,10 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.projeto.tcc.dominio.singleTable;
-
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
@@ -13,10 +7,16 @@ import javax.persistence.Entity;
  * @author Woshington Rodrigues
  */
 @Entity
-@DiscriminatorValue(value="A")
+@DiscriminatorValue(value="AGR")
 public class AccessGroupRef extends ObjectRef {
-
+    
+    //Exigência do JPA, construtor público ou privado.
     public AccessGroupRef() {
     }
+
+    //@FullConstructor
+    public AccessGroupRef(ObjectID objectId) {
+        super.setObjectId(objectId);
+    }  
     
 }

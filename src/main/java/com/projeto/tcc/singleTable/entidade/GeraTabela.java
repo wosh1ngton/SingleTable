@@ -1,12 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.projeto.tcc.singleTable.entidade;
 
+import com.projeto.tcc.dominio.singleTable.AccessGroupRef;
 import com.projeto.tcc.dominio.singleTable.HierObjectID;
 import com.projeto.tcc.dominio.singleTable.InternetID;
+import com.projeto.tcc.dominio.singleTable.TemplateID;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -17,19 +14,31 @@ import javax.persistence.Persistence;
  */
 public class GeraTabela {
     public static void main(String[] args) {
-        InternetID internet=new InternetID();
-        internet.setValue("www.globo.com");
-        HierObjectID h=new HierObjectID();
-        h.setValue("testand21");
+        
         
         EntityManagerFactory factory=Persistence.createEntityManagerFactory("identification_st");
         EntityManager em=factory.createEntityManager();
         
+        InternetID internet=new InternetID("www.sbt.com");
+        TemplateID tempID=new TemplateID("oremos");
+        
+        
         em.getTransaction().begin();
-        em.persist(h);
+        //tempID=em.find(TemplateID.class,1L);
+        //em.persist(tempID);
+        em.persist(internet);
+       // AccessGroupRef agr2=new AccessGroupRef(tempID);
+        //agr2.setType("segredo2");
+        
+        //em.persist(agr2);
+        //em.persist(internet);
         em.getTransaction().commit();
         
-        System.out.println("Endereco: " + h.getValue());
+        
+        //Tarefa encontrada = manager.find(Tarefa.class, 2L);
+        //System.out.println(encontrada.getDescricao());  
+    
+        System.out.println("Endereco: " + internet.getValue());
         
         em.close();
     }

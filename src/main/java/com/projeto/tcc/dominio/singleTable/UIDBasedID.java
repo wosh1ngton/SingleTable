@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.projeto.tcc.dominio.singleTable;
 
 import javax.persistence.DiscriminatorColumn;
@@ -20,8 +15,8 @@ import javax.persistence.Table;
 @Entity
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="UIDBasedID_TYPE",
-      discriminatorType=DiscriminatorType.STRING, length=2)
-@DiscriminatorValue(value="UB")
+      discriminatorType=DiscriminatorType.STRING, length=20)
+@DiscriminatorValue(value="UIB")
 public abstract class UIDBasedID extends ObjectID {
-    
+    public abstract UID root();
 }
