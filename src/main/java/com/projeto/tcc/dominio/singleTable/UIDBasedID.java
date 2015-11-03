@@ -6,17 +6,23 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.Table;
 
 /**
  *
  * @author Woshington
  */
+
 @Entity
-@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="UIDBasedID_TYPE",
-      discriminatorType=DiscriminatorType.STRING, length=20)
-@DiscriminatorValue(value="UIB")
+@DiscriminatorValue(value="UID_BASEDID") 
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "UIDBASED_TYPE",discriminatorType = DiscriminatorType.STRING)
 public abstract class UIDBasedID extends ObjectID {
-    public abstract UID root();
+        
+    public UIDBasedID(String value) {
+        super(value);
+    }
+
+    public UIDBasedID() {
+    }
+    
 }

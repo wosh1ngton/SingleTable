@@ -17,47 +17,13 @@ public class VersionTreeID implements Serializable {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
     private String value;
-    private String trunkVersion;
-    private String branchNumber;
-    private String branchVersion;
-
+   
     public VersionTreeID() {
     }
 
-    public VersionTreeID(String value, String trunkVersion, String branchNumber, String branchVersion) {
+    public VersionTreeID(String value) {
         this.value = value;
-        this.trunkVersion = trunkVersion;
-        this.branchNumber = branchNumber;
-        this.branchVersion = branchVersion;
-    }
-    
-    
-    public String getTrunkVersion() {
-        return trunkVersion;
-    }
-
-    public void setTrunkVersion(String trunkVersion) {
-        this.trunkVersion = trunkVersion;
-    }
-
-    public String getBranchNumber() {
-        return branchNumber;
-    }
-
-    public void setBranchNumber(String branchNumber) {
-        this.branchNumber = branchNumber;
-    }
-
-    public String getBranchVersion() {
-        return branchVersion;
-    }
-
-    public void setBranchVersion(String branchVersion) {
-        this.branchVersion = branchVersion;
-    }
-    
-    
-    
+    }    
 
     public String getValue() {
         return value;

@@ -15,9 +15,8 @@ public class PopulaVersionTreeID {
         EntityManager entidade=fabrica.createEntityManager();
         
         entidade.getTransaction().begin();
-         VersionTreeID vtid=new VersionTreeID("5", "3.2", "22", "2.4");
-          VersionTreeID vtid2=new VersionTreeID("3", "3.2.1", "23", "2.5");
-        entidade.persist(vtid2);
+       
+       // entidade.persist();
         entidade.getTransaction().commit();
         entidade.close();
     }

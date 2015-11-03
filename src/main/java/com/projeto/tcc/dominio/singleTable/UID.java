@@ -12,13 +12,12 @@ import javax.persistence.InheritanceType;
 
 /**
  *
- * @author Woshington Rodrigues da Silva
+ * @author Woshington 
  * Single-Table Strategy
  */
 @Entity
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="UID_TYPE",
-        discriminatorType=DiscriminatorType.STRING, length=20)
+@DiscriminatorColumn(name="UID_TYPE", discriminatorType=DiscriminatorType.STRING, length=20)
 public abstract class UID implements Serializable {
 
     public UID() {

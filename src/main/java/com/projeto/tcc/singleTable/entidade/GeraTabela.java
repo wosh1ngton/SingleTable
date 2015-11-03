@@ -19,7 +19,7 @@ public class GeraTabela {
         EntityManagerFactory factory=Persistence.createEntityManagerFactory("identification_st");
         EntityManager em=factory.createEntityManager();
         
-        InternetID internet=new InternetID("www.sbt.com");
+        InternetID internet=new InternetID("http://www.sbt.com");
         TemplateID tempID=new TemplateID("oremos");
         
         

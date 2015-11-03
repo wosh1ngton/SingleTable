@@ -8,7 +8,7 @@ import javax.persistence.Entity;
  * @author Woshington
  */
 @Entity
-@DiscriminatorValue(value="TID")
+@DiscriminatorValue(value="TEMPLATE")
 public class TemplateID extends ObjectID {
 
     public TemplateID() {
@@ -16,6 +16,6 @@ public class TemplateID extends ObjectID {
     
     //@FullConstructor
     public TemplateID(String value) {
-	super.setValue(value);
+	super(value);
     }
 }

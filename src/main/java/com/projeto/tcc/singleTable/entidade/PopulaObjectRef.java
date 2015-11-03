@@ -1,67 +1,70 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.projeto.tcc.singleTable.entidade;
 
 import com.projeto.tcc.dominio.singleTable.AccessGroupRef;
+import com.projeto.tcc.dominio.singleTable.ArchetypeID;
 import com.projeto.tcc.dominio.singleTable.GenericID;
 import com.projeto.tcc.dominio.singleTable.HierObjectID;
-import com.projeto.tcc.dominio.singleTable.ISO_OID;
 import com.projeto.tcc.dominio.singleTable.LocatableRef;
+import com.projeto.tcc.dominio.singleTable.ObjectID;
 import com.projeto.tcc.dominio.singleTable.ObjectRef;
 import com.projeto.tcc.dominio.singleTable.ObjectVersionID;
-import com.projeto.tcc.dominio.singleTable.UUID;
+import com.projeto.tcc.dominio.singleTable.PartyRef;
+import com.projeto.tcc.dominio.singleTable.TemplateID;
+import com.projeto.tcc.dominio.singleTable.TerminologyID;
+import com.projeto.tcc.dominio.singleTable.UIDBasedID;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import javax.persistence.Query;
 import javax.persistence.TypedQuery;
-import sun.net.www.content.text.Generic;
+
 
 /**
  *
  * @author Woshington
  */
 public class PopulaObjectRef {
+    public static void main(String[] args) {
+        
+   
+    EntityManagerFactory fabrica = Persistence.createEntityManagerFactory("identification_st");
+    EntityManager entidade=fabrica.createEntityManager();
+   entidade.getTransaction().begin();
     
-    private EntityManager entityManager;
-            public List<ObjectRef> findAllObjects() {
-            TypedQuery<ObjectRef> query = entityManager.createQuery(
-            "SELECT c FROM OBJECTREF c",ObjectRef.class);
-            return query.getResultList();
-        }
-     public static void main(String[] args) {
+    
+    ObjectID objeto = entidade.find(ArchetypeID.class, 1L);
          
-        List<ObjectRef> objetos=new ArrayList<ObjectRef>();
-        PopulaObjectRef pf=new PopulaObjectRef();
-        objetos=pf.findAllObjects();
-         System.out.println("teste: "+objetos);
-        /*
-        EntityManagerFactory fabrica=Persistence.createEntityManagerFactory("identification_st");
-        EntityManager entidade=fabrica.createEntityManager();
-         entidade.getTransaction().begin();
+    TemplateID temp=entidade.find(TemplateID.class, 2L);
+        
+    GenericID generic=entidade.find(GenericID.class, 3L);
+       //TerminologyID termi=entidade.find(TerminologyID.class, 4L);
+        
+        UIDBasedID uid=entidade.find(ObjectVersionID.class, 5L);
+        UIDBasedID uid2=entidade.find(HierObjectID.class, 6L);
+        
+        //HierObjectID hier=entidade.find(HierObjectID.class, 7L);
+       // ObjectVersionID version=entidade.find(ObjectVersionID.class, 8L);
+      ObjectVersionID versao=entidade.find(ObjectVersionID.class, 9L);
          
-         
-       /*
-       
-        ISO_OID iso;
-        iso=entidade.find(ISO_OID.class,2L);
-        HierObjectID hob=new HierObjectID(iso, "valor");
-        hob=entidade.find(HierObjectID.class, 5L);
-        //ObjectRef or=new ObjectRef(hob, "nada", "tipo2");
-        ObjectVersionID ovid;
-        ovid=entidade.find(ObjectVersionID.class, 8L);
-         AccessGroupRef agr=new AccessGroupRef(hob);
-         LocatableRef lrf=new LocatableRef(ovid, "namespace", "tipo", "caminho");
-        //UUID u=new UUID("8-4-4-4-12");
-       
-        //entidade.persist();
+         AccessGroupRef acc=new AccessGroupRef(temp);
+         PartyRef party = new PartyRef(objeto);
+         AccessGroupRef acc2=new AccessGroupRef(temp);
+       PartyRef party2 = new PartyRef(generic);
+       LocatableRef local = new LocatableRef(uid2, "feliz");
+        LocatableRef local2 = new LocatableRef(versao, "teste", "exemplo", "servico");
+    
+      entidade.persist(acc);
+      entidade.persist(party);
+        entidade.persist(acc2);
+       entidade.persist(party2);
+       entidade.persist(local);
+     entidade.persist(local2);
+      //  entidade.persist();
+      //  entidade.persist();
+      //  entidade.persist();
         entidade.getTransaction().commit();
         entidade.close();
-        */
+       
      }
 }

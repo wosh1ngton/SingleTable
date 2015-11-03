@@ -9,10 +9,9 @@ import javax.persistence.OneToOne;
  * @author Woshington
  */
 @Entity
-@DiscriminatorValue(value="LTR")
+@DiscriminatorValue(value="LOCATABLE")
 public class LocatableRef extends ObjectRef {
-    
-     //Regra JPA
+        
     public LocatableRef() {
     }
 

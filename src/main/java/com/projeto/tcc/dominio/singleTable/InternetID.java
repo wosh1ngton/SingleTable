@@ -7,7 +7,7 @@ import javax.persistence.Entity;
  * @author Woshington
  */
 @Entity
-@DiscriminatorValue(value="IID")
+@DiscriminatorValue(value="NET")
 public class InternetID extends UID {
 
     public InternetID() {
@@ -15,6 +15,7 @@ public class InternetID extends UID {
     
     //@FullConstructor
     public InternetID(String value) {
-        super.setValue(value);
+        super(value);
+        
     }
 }

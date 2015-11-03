@@ -11,6 +11,8 @@ import com.projeto.tcc.dominio.singleTable.HierObjectID;
 import com.projeto.tcc.dominio.singleTable.ISO_OID;
 import com.projeto.tcc.dominio.singleTable.ObjectVersionID;
 import com.projeto.tcc.dominio.singleTable.TemplateID;
+import com.projeto.tcc.dominio.singleTable.TerminologyID;
+import com.projeto.tcc.dominio.singleTable.UIDBasedID;
 import com.projeto.tcc.dominio.singleTable.UUID;
 import com.projeto.tcc.dominio.singleTable.VersionTreeID;
 import javax.persistence.EntityManager;
@@ -24,37 +26,35 @@ import javax.persistence.Persistence;
 public class PopulaOjbectID {
     public static void main(String[] args) {
         EntityManagerFactory fabrica=Persistence.createEntityManagerFactory("identification_st");
-        EntityManager entidade=fabrica.createEntityManager();
+        EntityManager em=fabrica.createEntityManager();
         
-        entidade.getTransaction().begin();
         ArchetypeID arquetipo=new ArchetypeID();
-        arquetipo.setConceptName("biochemistry result-cholesterol");
-        arquetipo.setDomainConcept("Saude");
-        arquetipo.setQualifiedRmEntity("openehr-ehr_rm-entry");
-        arquetipo.setRmEntity("entry");
-        arquetipo.setRmOriginator("openehr");
-        arquetipo.setSpecialisation(null);
-        arquetipo.setVersionID("3.4");
-        arquetipo.setValue("323232");
+        arquetipo.setValue("valor arquetipo");
         
-        TemplateID temp=new TemplateID("ABC");
-        
+        TemplateID temp=new TemplateID("ABC");        
         GenericID generic=new GenericID("171", "valor geral");
+        TerminologyID termi=new TerminologyID("terminologia");        
+        UIDBasedID uid=new ObjectVersionID("version_id");
+        UIDBasedID uid2=new HierObjectID("hier_do_uid");        
+        HierObjectID hier=new HierObjectID("direto do hier");
+        ObjectVersionID version=new ObjectVersionID("Direto do version");
+        ObjectVersionID versao=new ObjectVersionID();
+        versao.setValue("fwefewf");
         
-        ISO_OID iso;
-        UUID u=new UUID("8-4-4-4-12");
-         VersionTreeID vtid=new VersionTreeID("5", "3.2", "22", "2.4");
-          VersionTreeID vtid2;
-          vtid2=entidade.find(VersionTreeID.class, 2L);
+        em.getTransaction().begin();
+        em.persist(arquetipo);
+        em.persist(temp);
+        em.persist(generic);
+        em.persist(termi);
+        em.persist(uid);
+        em.persist(uid2);
+        em.persist(hier);
+        em.persist(version);
+        em.persist(versao);
+        em.getTransaction().commit();
         
-        iso=entidade.find(ISO_OID.class,2L);
-        u=entidade.find(UUID.class,3L);
-        HierObjectID hob=new HierObjectID(iso, "valor");
-        hob=entidade.find(HierObjectID.class, 5L);
+        System.out.println("Endereco: " + arquetipo.getValue());
         
-        ObjectVersionID versao=new ObjectVersionID(u,vtid2, hob);
-        entidade.persist(versao);
-        entidade.getTransaction().commit();
-        entidade.close();
+        em.close();
     }
 }

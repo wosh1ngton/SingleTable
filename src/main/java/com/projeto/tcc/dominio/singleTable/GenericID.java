@@ -8,7 +8,7 @@ import javax.persistence.Entity;
  * @author Woshington
  */
 @Entity
-@DiscriminatorValue(value="GRI")
+@DiscriminatorValue(value="GENERIC")
 public class GenericID extends ObjectID {
 
     public GenericID(String scheme, String value) {
@@ -16,7 +16,10 @@ public class GenericID extends ObjectID {
         this.scheme = scheme;
     }
 
-    private final String scheme;
+    public GenericID() {
+    }
+
+    private String scheme;
 
     public String getScheme() {
         return scheme;

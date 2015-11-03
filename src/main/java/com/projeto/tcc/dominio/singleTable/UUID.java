@@ -8,15 +8,15 @@ import javax.persistence.Entity;
  * @author Woshington
  */
 @Entity
-@DiscriminatorValue(value="UUD")
+@DiscriminatorValue(value="UUID")
 public class UUID extends UID {
-
+    
     public UUID() {
     }
     
     //@FullConstructor
     public UUID(String value) {
-        super.setValue(value);        
+        super(value);        
     }    
       
 }

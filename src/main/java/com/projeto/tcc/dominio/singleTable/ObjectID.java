@@ -16,8 +16,7 @@ import javax.persistence.InheritanceType;
  */
 @Entity
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="object_id_TYPE",
-        discriminatorType=DiscriminatorType.STRING, length=20)
+@DiscriminatorColumn(name="OBJECTID_TYPE", discriminatorType=DiscriminatorType.STRING, length=20)
 public abstract class ObjectID implements Serializable {
 
     @Id

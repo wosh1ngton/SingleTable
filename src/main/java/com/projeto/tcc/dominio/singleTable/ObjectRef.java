@@ -2,6 +2,7 @@ package com.projeto.tcc.dominio.singleTable;
 import java.io.Serializable;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,11 +17,11 @@ import javax.persistence.Table;
  * @author Woshington
  */
 @Entity
-@Table(name="ObjectRef") /*Anotação opcional, por padrão o nome da classe é o nome da tabela,
+@Table(name="OBJECTREF") /*Anotação opcional, por padrão o nome da classe é o nome da tabela,
 caso deseje mudar o nome da tabela gerada é preciso especificar na clásula name. */
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="ObjectRef_TYPE",
-        discriminatorType=DiscriminatorType.STRING, length=20)
+@DiscriminatorColumn(name="REF_TYPE", discriminatorType=DiscriminatorType.STRING, length=20)
+@DiscriminatorValue(value = "OBJECT_REF")
 public class ObjectRef implements Serializable {
     
     @Id
@@ -33,6 +34,10 @@ public class ObjectRef implements Serializable {
     private String type;
 
     public ObjectRef() {
+    }
+
+    public ObjectRef(ObjectID objectId) {
+        this.objectId = objectId;
     }
     
     //@FullConstructor

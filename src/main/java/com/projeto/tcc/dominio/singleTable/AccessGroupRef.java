@@ -7,7 +7,7 @@ import javax.persistence.Entity;
  * @author Woshington Rodrigues
  */
 @Entity
-@DiscriminatorValue(value="AGR")
+@DiscriminatorValue(value="ACCESS_GROUP")
 public class AccessGroupRef extends ObjectRef {
     
     //Exigência do JPA, construtor público ou privado.
@@ -15,8 +15,10 @@ public class AccessGroupRef extends ObjectRef {
     }
 
     //@FullConstructor
+
     public AccessGroupRef(ObjectID objectId) {
-        super.setObjectId(objectId);
-    }  
+        super(objectId);
+    }
+     
     
 }

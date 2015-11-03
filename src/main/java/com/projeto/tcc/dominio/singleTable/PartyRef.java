@@ -8,16 +8,21 @@ import javax.persistence.Entity;
  * @author Woshington
  */
 @Entity
-@DiscriminatorValue(value="PYR")
+@DiscriminatorValue(value="PARTY")
 public class PartyRef extends ObjectRef {
     
     //Obrigatório o uso pelo JPA
     public PartyRef() {
     }
+
+    public PartyRef(ObjectID objectId, String namespace, String type) {
+        super(objectId, namespace, type);
+    }
     
    //@FullConstructor
-    public PartyRef(ObjectID objectId, String type) {
-        super.setObjectId(objectId);
-        super.setType(type);
-    }    
+
+    public PartyRef(ObjectID objectId) {
+        super(objectId);
+    }
+       
 }

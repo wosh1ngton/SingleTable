@@ -10,29 +10,18 @@ import javax.persistence.OneToOne;
  * @author Woshington
  */
 @Entity
-@DiscriminatorValue(value="HO")
+@DiscriminatorValue(value="HIER")
 public class HierObjectID extends UIDBasedID {
+
+    public HierObjectID(String value) {
+        super(value);
+    }
 
     public HierObjectID() {
     }
 
-    public HierObjectID(UID root, String extension) {
-        this.root = root;
-        this.extension = extension;
-    }
     
-    @OneToOne
-    private UID root;   // mandatory
-    private String extension;
     
-    public UID objectID() {
-		return root;
-	}
-    
-    @Override
-	public UID root() {
-		return objectID();
-    }
  
     
 }
