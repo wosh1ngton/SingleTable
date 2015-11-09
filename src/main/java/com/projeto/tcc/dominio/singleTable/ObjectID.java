@@ -19,6 +19,9 @@ import javax.persistence.InheritanceType;
 @DiscriminatorColumn(name="OBJECTID_TYPE", discriminatorType=DiscriminatorType.STRING, length=20)
 public abstract class ObjectID implements Serializable {
 
+    public ObjectID() {
+    }
+
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
@@ -29,8 +32,7 @@ public abstract class ObjectID implements Serializable {
         this.value = value;
     }
 
-    public ObjectID() {
-    }
+  
     
     public Long getId() {
         return id;

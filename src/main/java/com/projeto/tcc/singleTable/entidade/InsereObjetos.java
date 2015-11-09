@@ -24,7 +24,10 @@ import javax.persistence.TypedQuery;
  *
  * @author Woshington
  */
-public class PopulaObjectRef {
+public class InsereObjetos {
+    
+   
+    
     public static void main(String[] args) {
         
    

@@ -2,6 +2,7 @@ package com.projeto.tcc.dominio.singleTable;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToOne;
 
 /**
@@ -28,7 +29,7 @@ public class LocatableRef extends ObjectRef {
         this.based_id=id;
     }
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     private UIDBasedID based_id;
   
     private String path;

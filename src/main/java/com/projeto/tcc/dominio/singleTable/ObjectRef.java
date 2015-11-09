@@ -4,6 +4,7 @@ import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -23,12 +24,11 @@ caso deseje mudar o nome da tabela gerada é preciso especificar na clásula nam
 @DiscriminatorColumn(name="REF_TYPE", discriminatorType=DiscriminatorType.STRING, length=20)
 @DiscriminatorValue(value = "OBJECT_REF")
 public class ObjectRef implements Serializable {
-    
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO) //Realiza o mapeamento de maneira automática.
     private Long id;
     
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     private ObjectID objectId;
     private String namespace;
     private String type;
